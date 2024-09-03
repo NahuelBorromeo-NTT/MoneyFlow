@@ -13,6 +13,8 @@ protocol HomeRouterProtocol {
 
 final class HomeRouter: HomeRouterProtocol {
     
+    var viewController: UIViewController!
+    
     static func createModule() -> UIViewController {
         let viewController = HomeViewController()
         let presenter = HomePresenter()
@@ -22,6 +24,7 @@ final class HomeRouter: HomeRouterProtocol {
         presenter.interactor = interactor
         presenter.router = router
         viewController.presenter = presenter
+        router.viewController = viewController
         return viewController
     }
 }
