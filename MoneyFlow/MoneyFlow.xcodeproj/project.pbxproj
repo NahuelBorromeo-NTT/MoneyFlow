@@ -7,6 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF10EC532C87C600002BEA63 /* IncomesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF10EC522C87C600002BEA63 /* IncomesViewController.swift */; };
+		BF10EC552C87C60A002BEA63 /* IncomesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF10EC542C87C60A002BEA63 /* IncomesInteractor.swift */; };
+		BF10EC572C87C615002BEA63 /* IncomesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF10EC562C87C615002BEA63 /* IncomesPresenter.swift */; };
+		BF10EC592C87C61D002BEA63 /* IncomesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF10EC582C87C61D002BEA63 /* IncomesRouter.swift */; };
+		BF10EC5B2C87C644002BEA63 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF10EC5A2C87C643002BEA63 /* TransactionViewController.swift */; };
+		BF10EC5D2C87C64E002BEA63 /* TransactionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF10EC5C2C87C64E002BEA63 /* TransactionInteractor.swift */; };
+		BF10EC5F2C87C65B002BEA63 /* TransactionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF10EC5E2C87C65B002BEA63 /* TransactionPresenter.swift */; };
+		BF10EC612C87C663002BEA63 /* TransactionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF10EC602C87C663002BEA63 /* TransactionRouter.swift */; };
+		BF10EC632C87C66B002BEA63 /* ExpensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF10EC622C87C66B002BEA63 /* ExpensesViewController.swift */; };
+		BF10EC652C87C676002BEA63 /* ExpensesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF10EC642C87C676002BEA63 /* ExpensesInteractor.swift */; };
+		BF10EC672C87C67D002BEA63 /* ExpensesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF10EC662C87C67D002BEA63 /* ExpensesPresenter.swift */; };
+		BF10EC692C87C683002BEA63 /* ExpensesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF10EC682C87C683002BEA63 /* ExpensesRouter.swift */; };
+		BF10EC6B2C87C68A002BEA63 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF10EC6A2C87C68A002BEA63 /* ConfigurationViewController.swift */; };
+		BF10EC6D2C87C68F002BEA63 /* ConfigurationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF10EC6C2C87C68F002BEA63 /* ConfigurationInteractor.swift */; };
+		BF10EC6F2C87C69F002BEA63 /* ConfigurationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF10EC6E2C87C69F002BEA63 /* ConfigurationPresenter.swift */; };
+		BF10EC712C87C6A9002BEA63 /* ConfigurationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF10EC702C87C6A9002BEA63 /* ConfigurationRouter.swift */; };
 		BFD48DD72C8668AF00E42FBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD48DD62C8668AF00E42FBF /* AppDelegate.swift */; };
 		BFD48DD92C8668AF00E42FBF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD48DD82C8668AF00E42FBF /* SceneDelegate.swift */; };
 		BFD48DDB2C8668AF00E42FBF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD48DDA2C8668AF00E42FBF /* HomeViewController.swift */; };
@@ -18,6 +34,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF10EC522C87C600002BEA63 /* IncomesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomesViewController.swift; sourceTree = "<group>"; };
+		BF10EC542C87C60A002BEA63 /* IncomesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomesInteractor.swift; sourceTree = "<group>"; };
+		BF10EC562C87C615002BEA63 /* IncomesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomesPresenter.swift; sourceTree = "<group>"; };
+		BF10EC582C87C61D002BEA63 /* IncomesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomesRouter.swift; sourceTree = "<group>"; };
+		BF10EC5A2C87C643002BEA63 /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
+		BF10EC5C2C87C64E002BEA63 /* TransactionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionInteractor.swift; sourceTree = "<group>"; };
+		BF10EC5E2C87C65B002BEA63 /* TransactionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionPresenter.swift; sourceTree = "<group>"; };
+		BF10EC602C87C663002BEA63 /* TransactionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRouter.swift; sourceTree = "<group>"; };
+		BF10EC622C87C66B002BEA63 /* ExpensesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesViewController.swift; sourceTree = "<group>"; };
+		BF10EC642C87C676002BEA63 /* ExpensesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesInteractor.swift; sourceTree = "<group>"; };
+		BF10EC662C87C67D002BEA63 /* ExpensesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesPresenter.swift; sourceTree = "<group>"; };
+		BF10EC682C87C683002BEA63 /* ExpensesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesRouter.swift; sourceTree = "<group>"; };
+		BF10EC6A2C87C68A002BEA63 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
+		BF10EC6C2C87C68F002BEA63 /* ConfigurationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationInteractor.swift; sourceTree = "<group>"; };
+		BF10EC6E2C87C69F002BEA63 /* ConfigurationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationPresenter.swift; sourceTree = "<group>"; };
+		BF10EC702C87C6A9002BEA63 /* ConfigurationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationRouter.swift; sourceTree = "<group>"; };
 		BFD48DD32C8668AF00E42FBF /* MoneyFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD48DD62C8668AF00E42FBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFD48DD82C8668AF00E42FBF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +73,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF10EC462C87C4E4002BEA63 /* Incomes */ = {
+			isa = PBXGroup;
+			children = (
+				BF10EC522C87C600002BEA63 /* IncomesViewController.swift */,
+				BF10EC542C87C60A002BEA63 /* IncomesInteractor.swift */,
+				BF10EC562C87C615002BEA63 /* IncomesPresenter.swift */,
+				BF10EC582C87C61D002BEA63 /* IncomesRouter.swift */,
+			);
+			path = Incomes;
+			sourceTree = "<group>";
+		};
+		BF10EC472C87C4EE002BEA63 /* Expenses */ = {
+			isa = PBXGroup;
+			children = (
+				BF10EC622C87C66B002BEA63 /* ExpensesViewController.swift */,
+				BF10EC642C87C676002BEA63 /* ExpensesInteractor.swift */,
+				BF10EC662C87C67D002BEA63 /* ExpensesPresenter.swift */,
+				BF10EC682C87C683002BEA63 /* ExpensesRouter.swift */,
+			);
+			path = Expenses;
+			sourceTree = "<group>";
+		};
+		BF10EC482C87C510002BEA63 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				BF10EC5A2C87C643002BEA63 /* TransactionViewController.swift */,
+				BF10EC5C2C87C64E002BEA63 /* TransactionInteractor.swift */,
+				BF10EC5E2C87C65B002BEA63 /* TransactionPresenter.swift */,
+				BF10EC602C87C663002BEA63 /* TransactionRouter.swift */,
+			);
+			path = Transaction;
+			sourceTree = "<group>";
+		};
+		BF10EC492C87C51B002BEA63 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				BF10EC6A2C87C68A002BEA63 /* ConfigurationViewController.swift */,
+				BF10EC6C2C87C68F002BEA63 /* ConfigurationInteractor.swift */,
+				BF10EC6E2C87C69F002BEA63 /* ConfigurationPresenter.swift */,
+				BF10EC702C87C6A9002BEA63 /* ConfigurationRouter.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
 		BFD48DCA2C8668AF00E42FBF = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +150,10 @@
 			isa = PBXGroup;
 			children = (
 				BFD48DEB2C86765B00E42FBF /* Home */,
+				BF10EC462C87C4E4002BEA63 /* Incomes */,
+				BF10EC482C87C510002BEA63 /* Transaction */,
+				BF10EC472C87C4EE002BEA63 /* Expenses */,
+				BF10EC492C87C51B002BEA63 /* Configuration */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -162,9 +242,25 @@
 				BFD48DDB2C8668AF00E42FBF /* HomeViewController.swift in Sources */,
 				BFD48DF12C86768200E42FBF /* HomeRouter.swift in Sources */,
 				BFD48DD72C8668AF00E42FBF /* AppDelegate.swift in Sources */,
+				BF10EC712C87C6A9002BEA63 /* ConfigurationRouter.swift in Sources */,
+				BF10EC592C87C61D002BEA63 /* IncomesRouter.swift in Sources */,
+				BF10EC552C87C60A002BEA63 /* IncomesInteractor.swift in Sources */,
+				BF10EC612C87C663002BEA63 /* TransactionRouter.swift in Sources */,
+				BF10EC672C87C67D002BEA63 /* ExpensesPresenter.swift in Sources */,
+				BF10EC6D2C87C68F002BEA63 /* ConfigurationInteractor.swift in Sources */,
 				BFD48DD92C8668AF00E42FBF /* SceneDelegate.swift in Sources */,
+				BF10EC572C87C615002BEA63 /* IncomesPresenter.swift in Sources */,
+				BF10EC632C87C66B002BEA63 /* ExpensesViewController.swift in Sources */,
+				BF10EC652C87C676002BEA63 /* ExpensesInteractor.swift in Sources */,
+				BF10EC5D2C87C64E002BEA63 /* TransactionInteractor.swift in Sources */,
 				BFD48DEF2C86767800E42FBF /* HomePresenter.swift in Sources */,
+				BF10EC5B2C87C644002BEA63 /* TransactionViewController.swift in Sources */,
+				BF10EC532C87C600002BEA63 /* IncomesViewController.swift in Sources */,
 				BFD48DED2C86766C00E42FBF /* HomeInteractor.swift in Sources */,
+				BF10EC6B2C87C68A002BEA63 /* ConfigurationViewController.swift in Sources */,
+				BF10EC5F2C87C65B002BEA63 /* TransactionPresenter.swift in Sources */,
+				BF10EC6F2C87C69F002BEA63 /* ConfigurationPresenter.swift in Sources */,
+				BF10EC692C87C683002BEA63 /* ExpensesRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
