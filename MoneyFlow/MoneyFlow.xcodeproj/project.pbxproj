@@ -31,8 +31,11 @@
 		BFD48DED2C86766C00E42FBF /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD48DEC2C86766C00E42FBF /* HomeInteractor.swift */; };
 		BFD48DEF2C86767800E42FBF /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD48DEE2C86767800E42FBF /* HomePresenter.swift */; };
 		BFD48DF12C86768200E42FBF /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD48DF02C86768200E42FBF /* HomeRouter.swift */; };
-		BFDEA6852C894A5100621383 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = BFDEA6842C894A5100621383 /* Realm */; };
-		BFDEA6872C894A5100621383 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BFDEA6862C894A5100621383 /* RealmSwift */; };
+		BFDEA68C2C895E4C00621383 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDEA68B2C895E4C00621383 /* Category.swift */; };
+		BFDEA68E2C895E5500621383 /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDEA68D2C895E5500621383 /* Expense.swift */; };
+		BFDEA6902C895E5D00621383 /* Income.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDEA68F2C895E5D00621383 /* Income.swift */; };
+		BFDEA6922C896A7800621383 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDEA6912C896A7800621383 /* TabBarController.swift */; };
+		BFDEA6952C896D5900621383 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BFDEA6942C896D5900621383 /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +65,10 @@
 		BFD48DEC2C86766C00E42FBF /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		BFD48DEE2C86767800E42FBF /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		BFD48DF02C86768200E42FBF /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		BFDEA68B2C895E4C00621383 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		BFDEA68D2C895E5500621383 /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
+		BFDEA68F2C895E5D00621383 /* Income.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Income.swift; sourceTree = "<group>"; };
+		BFDEA6912C896A7800621383 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,8 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFDEA6872C894A5100621383 /* RealmSwift in Frameworks */,
-				BFDEA6852C894A5100621383 /* Realm in Frameworks */,
+				BFDEA6952C896D5900621383 /* RealmSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,9 +146,11 @@
 		BFD48DD52C8668AF00E42FBF /* MoneyFlow */ = {
 			isa = PBXGroup;
 			children = (
+				BFDEA6882C895E3000621383 /* Models */,
 				BFD48DEA2C86765700E42FBF /* Scenes */,
 				BFD48DD62C8668AF00E42FBF /* AppDelegate.swift */,
 				BFD48DD82C8668AF00E42FBF /* SceneDelegate.swift */,
+				BFDEA6912C896A7800621383 /* TabBarController.swift */,
 				BFD48DDF2C8668B000E42FBF /* Assets.xcassets */,
 				BFD48DE12C8668B000E42FBF /* LaunchScreen.storyboard */,
 				BFD48DE42C8668B000E42FBF /* Info.plist */,
@@ -173,6 +181,16 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		BFDEA6882C895E3000621383 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BFDEA68B2C895E4C00621383 /* Category.swift */,
+				BFDEA68D2C895E5500621383 /* Expense.swift */,
+				BFDEA68F2C895E5D00621383 /* Income.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -190,8 +208,7 @@
 			);
 			name = MoneyFlow;
 			packageProductDependencies = (
-				BFDEA6842C894A5100621383 /* Realm */,
-				BFDEA6862C894A5100621383 /* RealmSwift */,
+				BFDEA6942C896D5900621383 /* RealmSwift */,
 			);
 			productName = MoneyFlow;
 			productReference = BFD48DD32C8668AF00E42FBF /* MoneyFlow.app */;
@@ -222,7 +239,7 @@
 			);
 			mainGroup = BFD48DCA2C8668AF00E42FBF;
 			packageReferences = (
-				BFDEA6832C894A5100621383 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				BFDEA6932C896D5900621383 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = BFD48DD42C8668AF00E42FBF /* Products */;
 			projectDirPath = "";
@@ -250,6 +267,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFDEA68E2C895E5500621383 /* Expense.swift in Sources */,
+				BFDEA6922C896A7800621383 /* TabBarController.swift in Sources */,
 				BFD48DDB2C8668AF00E42FBF /* HomeViewController.swift in Sources */,
 				BFD48DF12C86768200E42FBF /* HomeRouter.swift in Sources */,
 				BFD48DD72C8668AF00E42FBF /* AppDelegate.swift in Sources */,
@@ -264,8 +283,10 @@
 				BF10EC632C87C66B002BEA63 /* ExpensesViewController.swift in Sources */,
 				BF10EC652C87C676002BEA63 /* ExpensesInteractor.swift in Sources */,
 				BF10EC5D2C87C64E002BEA63 /* TransactionInteractor.swift in Sources */,
+				BFDEA68C2C895E4C00621383 /* Category.swift in Sources */,
 				BFD48DEF2C86767800E42FBF /* HomePresenter.swift in Sources */,
 				BF10EC5B2C87C644002BEA63 /* TransactionViewController.swift in Sources */,
+				BFDEA6902C895E5D00621383 /* Income.swift in Sources */,
 				BF10EC532C87C600002BEA63 /* IncomesViewController.swift in Sources */,
 				BFD48DED2C86766C00E42FBF /* HomeInteractor.swift in Sources */,
 				BF10EC6B2C87C68A002BEA63 /* ConfigurationViewController.swift in Sources */,
@@ -496,7 +517,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		BFDEA6832C894A5100621383 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+		BFDEA6932C896D5900621383 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
@@ -507,14 +528,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BFDEA6842C894A5100621383 /* Realm */ = {
+		BFDEA6942C896D5900621383 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BFDEA6832C894A5100621383 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		BFDEA6862C894A5100621383 /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BFDEA6832C894A5100621383 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			package = BFDEA6932C896D5900621383 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */

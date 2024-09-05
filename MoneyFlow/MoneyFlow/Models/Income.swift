@@ -6,3 +6,12 @@
 //
 
 import Foundation
+import RealmSwift
+
+final class Income: Object {
+    
+    @Persisted(primaryKey: true) var id: String = UUID().uuidString
+    @Persisted var name: String = ""
+    @Persisted var amount: Double = 0.0
+    @Persisted var date: Date
+}
