@@ -13,7 +13,7 @@ protocol TransactionRouterProtocol {
 
 final class TransactionRouter: TransactionRouterProtocol {
     
-    var viewController: UIViewController!
+    unowned var viewController: UIViewController!
     
     static func createModule() -> UIViewController {
         let viewController = TransactionViewController()
