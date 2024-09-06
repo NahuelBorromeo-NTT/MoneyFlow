@@ -2,15 +2,26 @@
 //  Category.swift
 //  MoneyFlow
 //
-//  Created by Brian Nahuel Borromeo Da Costa on 4/09/24.
+//  Created by Brian Nahuel Borromeo Da Costa on 5/09/24.
 //
 
 import Foundation
-import RealmSwift
 
-final class Category: Object {
+enum Category: String, CaseIterable {
+    case alimentación = "Alimentación"
+    case hogar = "Hogar"
+    case ropa = "Ropa"
+    case viajes = "Viajes"
+    case salidas = "Salidas"
+    case inversión = "Inversión"
+    case mascota = "Mascota"
+    case varios = "Gastos Varios"
+    case transporte = "Transporte"
+    case entretenimiento = "Entretenimiento"
+    case salud = "Salud"
+    case educacion = "Educación"
     
-    @Persisted(primaryKey: true) var _id: String = UUID().uuidString
-    @Persisted var name: String = ""
-    
+    static var all: [Category] {
+        return Category.allCases
+    }
 }
