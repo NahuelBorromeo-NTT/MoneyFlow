@@ -23,6 +23,8 @@
 		BF10EC6D2C87C68F002BEA63 /* ConfigurationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF10EC6C2C87C68F002BEA63 /* ConfigurationInteractor.swift */; };
 		BF10EC6F2C87C69F002BEA63 /* ConfigurationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF10EC6E2C87C69F002BEA63 /* ConfigurationPresenter.swift */; };
 		BF10EC712C87C6A9002BEA63 /* ConfigurationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF10EC702C87C6A9002BEA63 /* ConfigurationRouter.swift */; };
+		BF5A61462C8A5D2E009EE3FA /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5A61452C8A5D2E009EE3FA /* Category.swift */; };
+		BF5A61482C8A6BE3009EE3FA /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5A61472C8A6BE3009EE3FA /* TransactionType.swift */; };
 		BFD48DD72C8668AF00E42FBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD48DD62C8668AF00E42FBF /* AppDelegate.swift */; };
 		BFD48DD92C8668AF00E42FBF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD48DD82C8668AF00E42FBF /* SceneDelegate.swift */; };
 		BFD48DDB2C8668AF00E42FBF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD48DDA2C8668AF00E42FBF /* HomeViewController.swift */; };
@@ -31,7 +33,6 @@
 		BFD48DED2C86766C00E42FBF /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD48DEC2C86766C00E42FBF /* HomeInteractor.swift */; };
 		BFD48DEF2C86767800E42FBF /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD48DEE2C86767800E42FBF /* HomePresenter.swift */; };
 		BFD48DF12C86768200E42FBF /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD48DF02C86768200E42FBF /* HomeRouter.swift */; };
-		BFDEA68C2C895E4C00621383 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDEA68B2C895E4C00621383 /* Category.swift */; };
 		BFDEA68E2C895E5500621383 /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDEA68D2C895E5500621383 /* Expense.swift */; };
 		BFDEA6902C895E5D00621383 /* Income.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDEA68F2C895E5D00621383 /* Income.swift */; };
 		BFDEA6922C896A7800621383 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDEA6912C896A7800621383 /* TabBarController.swift */; };
@@ -55,6 +56,8 @@
 		BF10EC6C2C87C68F002BEA63 /* ConfigurationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationInteractor.swift; sourceTree = "<group>"; };
 		BF10EC6E2C87C69F002BEA63 /* ConfigurationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationPresenter.swift; sourceTree = "<group>"; };
 		BF10EC702C87C6A9002BEA63 /* ConfigurationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationRouter.swift; sourceTree = "<group>"; };
+		BF5A61452C8A5D2E009EE3FA /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		BF5A61472C8A6BE3009EE3FA /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
 		BFD48DD32C8668AF00E42FBF /* MoneyFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD48DD62C8668AF00E42FBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFD48DD82C8668AF00E42FBF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,7 +68,6 @@
 		BFD48DEC2C86766C00E42FBF /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		BFD48DEE2C86767800E42FBF /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		BFD48DF02C86768200E42FBF /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
-		BFDEA68B2C895E4C00621383 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		BFDEA68D2C895E5500621383 /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
 		BFDEA68F2C895E5D00621383 /* Income.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Income.swift; sourceTree = "<group>"; };
 		BFDEA6912C896A7800621383 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -184,9 +186,10 @@
 		BFDEA6882C895E3000621383 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				BFDEA68B2C895E4C00621383 /* Category.swift */,
 				BFDEA68D2C895E5500621383 /* Expense.swift */,
 				BFDEA68F2C895E5D00621383 /* Income.swift */,
+				BF5A61452C8A5D2E009EE3FA /* Category.swift */,
+				BF5A61472C8A6BE3009EE3FA /* TransactionType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -276,6 +279,8 @@
 				BF10EC592C87C61D002BEA63 /* IncomesRouter.swift in Sources */,
 				BF10EC552C87C60A002BEA63 /* IncomesInteractor.swift in Sources */,
 				BF10EC612C87C663002BEA63 /* TransactionRouter.swift in Sources */,
+				BF5A61462C8A5D2E009EE3FA /* Category.swift in Sources */,
+				BF5A61482C8A6BE3009EE3FA /* TransactionType.swift in Sources */,
 				BF10EC672C87C67D002BEA63 /* ExpensesPresenter.swift in Sources */,
 				BF10EC6D2C87C68F002BEA63 /* ConfigurationInteractor.swift in Sources */,
 				BFD48DD92C8668AF00E42FBF /* SceneDelegate.swift in Sources */,
@@ -283,7 +288,6 @@
 				BF10EC632C87C66B002BEA63 /* ExpensesViewController.swift in Sources */,
 				BF10EC652C87C676002BEA63 /* ExpensesInteractor.swift in Sources */,
 				BF10EC5D2C87C64E002BEA63 /* TransactionInteractor.swift in Sources */,
-				BFDEA68C2C895E4C00621383 /* Category.swift in Sources */,
 				BFD48DEF2C86767800E42FBF /* HomePresenter.swift in Sources */,
 				BF10EC5B2C87C644002BEA63 /* TransactionViewController.swift in Sources */,
 				BFDEA6902C895E5D00621383 /* Income.swift in Sources */,

@@ -6,9 +6,13 @@
 //
 
 protocol TransactionInteractorProtocol {
-    
+    func getAllCategories() -> [Category]
 }
 
 final class TransactionInteractor: TransactionInteractorProtocol {
+    func getAllCategories() -> [Category] {
+        return Category.all
+    }
+    
     
 }

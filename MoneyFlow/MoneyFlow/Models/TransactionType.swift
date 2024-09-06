@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+enum TransactionType: String {
+    case income = "Ingreso"
+    case expense = "Gasto"
+}
