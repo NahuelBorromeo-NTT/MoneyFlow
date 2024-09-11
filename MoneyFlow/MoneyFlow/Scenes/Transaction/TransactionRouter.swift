@@ -8,10 +8,14 @@
 import UIKit
 
 protocol TransactionRouterProtocol {
-    
+    func dismissTransactionView()
 }
 
 final class TransactionRouter: TransactionRouterProtocol {
+    func dismissTransactionView() {
+        viewController.dismiss(animated: true)
+    }
+    
     
     unowned var viewController: UIViewController!
     

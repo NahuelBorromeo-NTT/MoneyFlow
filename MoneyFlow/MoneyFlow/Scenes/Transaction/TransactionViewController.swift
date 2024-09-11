@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 protocol TransactionView: AnyObject {
     
@@ -14,7 +15,7 @@ protocol TransactionView: AnyObject {
 final class TransactionViewController: UIViewController {
     
     var presenter: TransactionPresenterProtocol!
-    
+
     private let amountLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor(resource: .customColorPrimary)
@@ -26,7 +27,7 @@ final class TransactionViewController: UIViewController {
     }()
     
     private let amountTextField: UITextField = {
-       let textField = UITextField()
+        let textField = UITextField()
         textField.placeholder = "Ingrese el monto"
         textField.borderStyle = .roundedRect
         textField.textColor = UIColor(named: "CustomPrimaryColor")
@@ -48,7 +49,7 @@ final class TransactionViewController: UIViewController {
     }()
     
     private let detailTextfield: UITextField = {
-       let textField = UITextField()
+        let textField = UITextField()
         textField.placeholder = "Ingrese un detalle"
         textField.borderStyle = .roundedRect
         textField.backgroundColor = .white
@@ -67,7 +68,7 @@ final class TransactionViewController: UIViewController {
     }()
     
     private let categoryTextField: UITextField = {
-       let textField = UITextField()
+        let textField = UITextField()
         textField.placeholder = "Selecciona la categoría"
         textField.backgroundColor = .white
         textField.textColor = .black
@@ -86,10 +87,48 @@ final class TransactionViewController: UIViewController {
         return pickerView
     }()
     
-    private let categoryToolBar: UIToolbar = {
-      let toolbar = UIToolbar()
+    private let toolBar: UIToolbar = {
+        let toolbar = UIToolbar()
         toolbar.sizeToFit()
         return toolbar
+    }()
+    
+    private let doneButton: UIBarButtonItem = {
+       let barButtonItem = UIBarButtonItem()
+        barButtonItem.title = "Listo"
+        barButtonItem.style = .plain
+        barButtonItem.action = #selector(dismissKeyboard)
+        return barButtonItem
+    }()
+    
+    private let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+
+    private let dateLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor(resource: .customColorPrimary)
+        label.textAlignment = .left
+        label.font = .systemFont(ofSize: 16, weight: .regular)
+        label.text = "Selecciona la fecha:"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let datePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        datePicker.preferredDatePickerStyle = .compact
+        datePicker.datePickerMode = .date
+        return datePicker
+    }()
+    
+    private let registerTransactionButton: UIButton = {
+        let button = UIButton()
+        var configuration = UIButton.Configuration.filled()
+        configuration.title = "Registrar Transacción"
+        configuration.baseBackgroundColor = UIColor(resource: .customColorIncome)
+        button.configuration = configuration
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     override func viewDidLoad() {
@@ -98,6 +137,13 @@ final class TransactionViewController: UIViewController {
     }
     
     private func setupUI() {
+        amountTextField.becomeFirstResponder()
+        
+        toolBar.setItems([flexibleSpace,doneButton], animated: false)
+        amountTextField.inputAccessoryView = toolBar
+        detailTextfield.inputAccessoryView = toolBar
+        categoryTextField.inputAccessoryView = toolBar
+        
         view.backgroundColor = .white
         title = "Nueva Transacción"
         
@@ -109,8 +155,9 @@ final class TransactionViewController: UIViewController {
         categoryTextField.inputView = categoryPickerView
         
         transactionTypeSegmentedControl.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
+        registerTransactionButton.addTarget(self, action: #selector(didTapRegisterTransactionButton), for: .touchUpInside)
         
-        [amountLabel,amountTextField, detailLabel, detailTextfield, categoryTextField, transactionTypeSegmentedControl].forEach(view.addSubview)
+        [amountLabel,amountTextField, detailLabel, detailTextfield, categoryTextField, transactionTypeSegmentedControl, dateLabel, datePicker, registerTransactionButton].forEach(view.addSubview)
         
         NSLayoutConstraint.activate([
             amountLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -138,25 +185,53 @@ final class TransactionViewController: UIViewController {
             categoryTextField.topAnchor.constraint(equalTo: transactionTypeSegmentedControl.bottomAnchor, constant: 20),
             categoryTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             categoryTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            dateLabel.topAnchor.constraint(equalTo: categoryTextField.bottomAnchor, constant: 20),
+            dateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            dateLabel.widthAnchor.constraint(equalToConstant: 150),
+            dateLabel.heightAnchor.constraint(equalTo: datePicker.heightAnchor, multiplier: 1),
+            
+            datePicker.topAnchor.constraint(equalTo: categoryTextField.bottomAnchor, constant: 20),
+            datePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            datePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            
+            registerTransactionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40),
+            registerTransactionButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
         transactionTypeSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black ], for: .normal)
         transactionTypeSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
     }
     
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     @objc private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
-        
         switch sender.selectedSegmentIndex {
             case 0:
-            transactionTypeSegmentedControl.selectedSegmentTintColor = UIColor(resource: .customColorExpense)
+                transactionTypeSegmentedControl.selectedSegmentTintColor = UIColor(resource: .customColorExpense)
                 showCategoryTextField()
+                presenter.transactionType = .expense
             case 1:
                 transactionTypeSegmentedControl.selectedSegmentTintColor = UIColor(resource: .customColorIncome)
                 hideCategoryTextField()
+                presenter.transactionType = .income
+                categoryTextField.text = .none
+                categoryPickerView.selectRow(0, inComponent: 0, animated: false)
             default:
                 break
         }
-        
+    }
+    
+    @objc private func didTapRegisterTransactionButton() {
+        var isComplete: Bool
+        guard let amount = Double(amountTextField.text!) else { return }
+        let detail = detailTextfield.text ?? ""
+        let category = categoryTextField.text ?? ""
+                
+        isComplete = presenter.recordTransaction(amount: amount, detail: detail, category: category, date: datePicker.date)
+        print(isComplete)
     }
     
     private func showCategoryTextField() {
@@ -216,7 +291,6 @@ extension TransactionViewController: UIPickerViewDataSource, UIPickerViewDelegat
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         categoryTextField.text = presenter.getTitleForRow(row: row)
-        categoryTextField.resignFirstResponder()
     }
     
 }
