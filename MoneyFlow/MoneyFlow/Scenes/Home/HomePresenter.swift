@@ -7,12 +7,14 @@
 import UIKit
 
 protocol HomePresenterProtocol {
-    func getBalance() -> NSMutableAttributedString
     func getPickerButtonTitle() -> String
     func getCurrentMonthIndex() -> Int?
     func getCurrentYearIndex() -> Int?
     func getMonth(with index: Int) -> String
     func getYear(with index: Int) -> Int
+    func getAmountExpenses() -> Double
+    func getAmountIncomes() -> Double
+    func getBalance()
     var monthsCount: Int { get }
     var yearsCount: Int { get }
     var selectedMonth: Int { get set }
@@ -25,36 +27,64 @@ final class HomePresenter {
     var interactor: HomeInteractorProtocol!
     var router: HomeRouterProtocol!
     
-    private var _selectedMonth: Int = Calendar.current.component(.month, from: Date())
-    private var _selectedYear: Int = Calendar.current.component(.year, from: Date())
+    var selectedMonth: Int = Calendar.current.component(.month, from: Date())
+    var selectedYear: Int = Calendar.current.component(.year, from: Date())
     
-    private let months = [
-        "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-        "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
-    ]
+    private let months = DateUtils.months
     
-    private let years: [Int] = {
-        let currentYear = Calendar.current.component(.year, from: Date())
-        return Array(currentYear - 5...currentYear)
-    }()
-    
+    private let years = DateUtils.years
 }
 
 extension HomePresenter: HomePresenterProtocol {
-
-    func getBalance() -> NSMutableAttributedString {
-        let balance = String(format: "%.2f", interactor.getBalance())
-        let balanceText = "Saldo    S/. \(balance)"
-        let attributedString = NSMutableAttributedString(string: balanceText)
+    func getAmountExpenses() -> Double {
+        let expenses: [Expense]
+        let calendar = Calendar.current
         
-        let balanceRange = (balanceText as NSString).range(of: "Saldo   ")
-        let amountRange = (balanceText as NSString).range(of: "S/. \(balance)")
+        var components = DateComponents()
+        components.year = selectedYear
+        components.month = selectedMonth
+        components.day = 1
+        let startDate = calendar.date(from: components)!
         
-        attributedString.addAttribute(.foregroundColor, value: UIColor(named: "CustomColorPrimary") ?? .label, range: balanceRange)
-        attributedString.addAttribute(.foregroundColor, value: UIColor(named: "CustomColorAmount") ?? .yellow, range: amountRange)
-        attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 32, weight: .regular), range: amountRange)
+        var endComponents = DateComponents()
+        endComponents.year = selectedYear
+        endComponents.month = selectedMonth + 1
+        endComponents.day = 0
+        let endDate = calendar.date(from: endComponents)!
         
-        return attributedString
+        expenses = interactor.getExpenses(with: startDate, and: endDate)
+        let expensesAmount = expenses.reduce(0) { sum, expense in
+            return sum + expense.amount
+        }
+        return expensesAmount
+    }
+    
+    func getAmountIncomes() -> Double {
+        let incomes: [Income]
+        let calendar = Calendar.current
+        
+        var components = DateComponents()
+        components.year = selectedYear
+        components.month = selectedMonth
+        components.day = 1
+        let startDate = calendar.date(from: components)!
+        
+        var endComponents = DateComponents()
+        endComponents.year = selectedYear
+        endComponents.month = selectedMonth + 1
+        endComponents.day = 0
+        let endDate = calendar.date(from: endComponents)!
+        
+        incomes = interactor.getIncomes(with: startDate, and: endDate)
+        let incomesAmount = incomes.reduce(0) { sum, income in
+            return sum + income.amount
+        }
+        return incomesAmount
+    }
+    
+    func getBalance() {
+        let balance = getAmountIncomes() - getAmountExpenses()
+        view.updateBalance(balance)
     }
     
     func getPickerButtonTitle() -> String {
@@ -83,23 +113,5 @@ extension HomePresenter: HomePresenterProtocol {
     
     var yearsCount: Int {
         years.count
-    }
-    
-    var selectedMonth: Int {
-        get {
-            return _selectedMonth
-        }
-        set {
-            _selectedMonth = newValue
-        }
-    }
-    
-    var selectedYear: Int {
-        get {
-            return _selectedYear
-        }
-        set {
-            _selectedYear = newValue
-        }
     }
 }

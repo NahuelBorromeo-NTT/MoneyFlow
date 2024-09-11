@@ -8,7 +8,7 @@
 import UIKit
 
 protocol HomeView: AnyObject {
-    
+    func updateBalance(_ balance: Double)
 }
 
 class HomeViewController: UIViewController {
@@ -16,16 +16,27 @@ class HomeViewController: UIViewController {
     var presenter: HomePresenterProtocol!
     
     private let hiddenTextField = UITextField()
-      
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        presenter.getBalance()
     }
     
     private let balanceLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        label.text = "Saldo: "
         label.font = .systemFont(ofSize: 24, weight: .regular)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let amountBalanceLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor(resource: .customColorPrimary)
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 28, weight: .regular)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -40,9 +51,10 @@ class HomeViewController: UIViewController {
         return label
     }()
     
+    // TODO: - convertir a componente
+
     private let datePickerView: UIPickerView = {
-       let pickerView = UIPickerView()
-        pickerView.translatesAutoresizingMaskIntoConstraints = false
+        let pickerView = UIPickerView()
         return pickerView
     }()
     
@@ -56,26 +68,28 @@ class HomeViewController: UIViewController {
     }()
     
     private func setupUI() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleTransactionAdded), name: .transactionAdded, object: nil)
         
         view.backgroundColor = .white
         title = "Inicio"
-        balanceLabel.attributedText = presenter.getBalance()
-
+        
         pickerButton.setTitle(presenter.getPickerButtonTitle(), for: .normal)
         pickerButton.addTarget(self, action: #selector(pickerButtonTapped), for: .touchUpInside)
-               
+        
         hiddenTextField.inputView = datePickerView
         hiddenTextField.inputAccessoryView = createToolbar()
-
+        
         datePickerView.delegate = self
         datePickerView.dataSource = self
         
-        [balanceLabel, resumeLabel, pickerButton, hiddenTextField].forEach(view.addSubview)
+        [balanceLabel, resumeLabel, pickerButton, hiddenTextField, amountBalanceLabel].forEach(view.addSubview)
         
         NSLayoutConstraint.activate([
             balanceLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
-            balanceLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            balanceLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            balanceLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            
+            amountBalanceLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
+            amountBalanceLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             
             resumeLabel.topAnchor.constraint(equalTo: balanceLabel.bottomAnchor, constant: 20),
             resumeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
@@ -83,7 +97,7 @@ class HomeViewController: UIViewController {
             pickerButton.topAnchor.constraint(equalTo: balanceLabel.bottomAnchor, constant: 20),
             pickerButton.leadingAnchor.constraint(equalTo: resumeLabel.trailingAnchor, constant: 20),
             pickerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -64),
-
+            
         ])
         
         if let currentMonthIndex = presenter.getCurrentMonthIndex() {
@@ -99,6 +113,12 @@ class HomeViewController: UIViewController {
         hiddenTextField.becomeFirstResponder()
     }
     
+    @objc private func handleTransactionAdded() {
+        presenter.getBalance()
+    }
+    
+    // TODO: - Convertir en componente
+
     private func createToolbar() -> UIToolbar {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
@@ -110,9 +130,10 @@ class HomeViewController: UIViewController {
         
         return toolbar
     }
-        
+    
     @objc private func doneTapped() {
         pickerButton.setTitle(presenter.getPickerButtonTitle(), for: .normal)
+        presenter.getBalance()
         hiddenTextField.resignFirstResponder()
     }
 }
@@ -128,19 +149,32 @@ extension HomeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return component == 0 ? presenter.getMonth(with: row) : "\(presenter.getYear(with: row))"
-       }
-       
-       func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-           if component == 0 {
-               presenter.selectedMonth = row + 1
-           } else {
-               presenter.selectedYear = presenter.getYear(with: row)
-           }
-       }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if component == 0 {
+            presenter.selectedMonth = row + 1
+        } else {
+            presenter.selectedYear = presenter.getYear(with: row)
+        }
+    }
 }
 
 extension HomeViewController: HomeView {
-    
+    @objc func updateBalance(_ balance: Double) {
+        let formattedBalance = String(format: "%.2f", balance)
+        switch balance {
+        case ..<0:
+            amountBalanceLabel.textColor = UIColor(resource: .customColorExpense)
+        case 0:
+            amountBalanceLabel.textColor = UIColor(resource: .customColorPrimary)
+        case 0...:
+            amountBalanceLabel.textColor = UIColor(resource: .customColorIncome)
+        default:
+            amountBalanceLabel.textColor = .black
+        }
+        amountBalanceLabel.text = " S/. \(formattedBalance)"
+    }
 }
 
 
