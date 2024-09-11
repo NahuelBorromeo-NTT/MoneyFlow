@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import DGCharts
 
 protocol HomeView: AnyObject {
     func updateBalance(_ balance: Double)
@@ -14,6 +15,7 @@ protocol HomeView: AnyObject {
 class HomeViewController: UIViewController {
     
     var presenter: HomePresenterProtocol!
+    var barChartView: BarChartView!
     
     private let hiddenTextField = UITextField()
     
@@ -68,6 +70,7 @@ class HomeViewController: UIViewController {
     }()
     
     private func setupUI() {
+        setupBarChart()
         NotificationCenter.default.addObserver(self, selector: #selector(handleTransactionAdded), name: .transactionAdded, object: nil)
         
         view.backgroundColor = .white
@@ -82,7 +85,7 @@ class HomeViewController: UIViewController {
         datePickerView.delegate = self
         datePickerView.dataSource = self
         
-        [balanceLabel, resumeLabel, pickerButton, hiddenTextField, amountBalanceLabel].forEach(view.addSubview)
+        [balanceLabel, resumeLabel, pickerButton, hiddenTextField, amountBalanceLabel, barChartView].forEach(view.addSubview)
         
         NSLayoutConstraint.activate([
             balanceLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
@@ -109,12 +112,48 @@ class HomeViewController: UIViewController {
         }
     }
     
+    private func setupBarChart() {
+        barChartView = BarChartView()
+        barChartView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 300)
+        barChartView.center = view.center
+                
+        let ingresosEntry = BarChartDataEntry(x: 0.0, y: presenter.getAmountIncomes())
+        let gastosEntry = BarChartDataEntry(x: 1.0, y: presenter.getAmountExpenses())
+        
+        let dataSet = BarChartDataSet(entries: [ingresosEntry, gastosEntry], label: "Ingresos vs Gastos")
+
+        dataSet.colors = [NSUIColor(resource: .customColorIncome), NSUIColor(resource: .customColorExpense)]
+
+        let data = BarChartData(dataSet: dataSet)
+
+        barChartView.data = data
+
+        barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: ["Ingresos", "Gastos"])
+        barChartView.xAxis.granularity = 1
+        barChartView.xAxis.labelPosition = .bottom
+        barChartView.animate(yAxisDuration: 2.0)
+    }
+    
+    private func updateBarChart() {
+        let ingresosEntry = BarChartDataEntry(x: 0.0, y: presenter.getAmountIncomes())
+        let gastosEntry = BarChartDataEntry(x: 1.0, y: presenter.getAmountExpenses())
+        
+        let dataSet = BarChartDataSet(entries: [ingresosEntry, gastosEntry], label: "Ingresos vs Gastos")
+
+        dataSet.colors = [NSUIColor(resource: .customColorIncome), NSUIColor(resource: .customColorExpense)]
+
+        let data = BarChartData(dataSet: dataSet)
+
+        barChartView.data = data
+    }
+    
     @objc private func pickerButtonTapped() {
         hiddenTextField.becomeFirstResponder()
     }
     
     @objc private func handleTransactionAdded() {
         presenter.getBalance()
+        updateBarChart()
     }
     
     // TODO: - Convertir en componente
@@ -133,7 +172,6 @@ class HomeViewController: UIViewController {
     
     @objc private func doneTapped() {
         pickerButton.setTitle(presenter.getPickerButtonTitle(), for: .normal)
-        presenter.getBalance()
         hiddenTextField.resignFirstResponder()
     }
 }
@@ -157,6 +195,8 @@ extension HomeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         } else {
             presenter.selectedYear = presenter.getYear(with: row)
         }
+        presenter.getBalance()
+        updateBarChart()
     }
 }
 
