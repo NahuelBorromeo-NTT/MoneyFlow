@@ -9,7 +9,6 @@ import Foundation
 import RealmSwift
 
 final class Income: Object {
-    
     @Persisted(primaryKey: true) var _id: String = UUID().uuidString
     @Persisted var detail: String = ""
     @Persisted var amount: Double = 0.0

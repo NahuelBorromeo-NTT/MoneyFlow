@@ -12,7 +12,6 @@ protocol ConfigurationView: AnyObject {
 }
 
 final class ConfigurationViewController: UIViewController {
-    
     var presenter: ConfigurationPresenterProtocol!
     
     private let tableView: UITableView = {
@@ -60,6 +59,4 @@ extension ConfigurationViewController: UITableViewDelegate, UITableViewDataSourc
         
         return cell ?? UITableViewCell()
     }
-    
-    
 }

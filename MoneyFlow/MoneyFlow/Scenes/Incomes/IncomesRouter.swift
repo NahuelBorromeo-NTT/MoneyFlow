@@ -12,7 +12,6 @@ protocol IncomesRouterProtocol {
 }
 
 final class IncomesRouter: IncomesRouterProtocol {
-    
     var viewController: UIViewController!
     
     static func createModule() -> UIViewController {

@@ -14,8 +14,8 @@ final class DateUtils {
     ]
     
     static let years: [Int] = {
-            let currentYear = Calendar.current.component(.year, from: Date())
-            return Array(currentYear - 5...currentYear)
+        let currentYear = Calendar.current.component(.year, from: Date())
+        return Array(currentYear - 5...currentYear)
     }()
     
     static func formatDate(_ date: Date) -> String {

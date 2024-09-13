@@ -45,7 +45,7 @@ final class ExpenseTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-        
+    
     private func setup() {
         contentView.addSubview(detailLabel)
         contentView.addSubview(amountLabel)
@@ -71,5 +71,4 @@ final class ExpenseTableViewCell: UITableViewCell {
         amountLabel.text = "S/. \(amount)"
         dateLabel.text = DateUtils.formatDate(date)
     }
-
 }

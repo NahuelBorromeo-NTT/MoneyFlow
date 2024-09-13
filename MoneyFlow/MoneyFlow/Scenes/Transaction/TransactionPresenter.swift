@@ -16,11 +16,10 @@ protocol TransactionPresenterProtocol {
 }
 
 final class TransactionPresenter {
-    
     weak var view: TransactionView!
     var interactor: TransactionInteractorProtocol!
     var router: TransactionRouterProtocol!
-
+    
     private var categories: [Category] = Category.all
     
     var transactionType: TransactionType = .expense
@@ -45,7 +44,7 @@ extension TransactionPresenter: TransactionPresenterProtocol {
             expense.date = date
             success = interactor.recordTransaction(transaction: expense)
         }
-
+        
         if success {
             NotificationCenter.default.post(name: .transactionAdded, object: nil)
             router.dismissTransactionView()
@@ -57,7 +56,7 @@ extension TransactionPresenter: TransactionPresenterProtocol {
     func getTitleForRow(row: Int) -> String {
         return categories[row].rawValue
     }
-        
+    
     var categoriesCount: Int {
         Category.all.count
     }

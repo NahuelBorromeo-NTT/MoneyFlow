@@ -13,9 +13,8 @@ protocol TransactionView: AnyObject {
 }
 
 final class TransactionViewController: UIViewController {
-    
     var presenter: TransactionPresenterProtocol!
-
+    
     private let amountLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor(resource: .customColorPrimary)
@@ -94,7 +93,7 @@ final class TransactionViewController: UIViewController {
     }()
     
     private let doneButton: UIBarButtonItem = {
-       let barButtonItem = UIBarButtonItem()
+        let barButtonItem = UIBarButtonItem()
         barButtonItem.title = "Listo"
         barButtonItem.style = .plain
         barButtonItem.action = #selector(dismissKeyboard)
@@ -102,7 +101,7 @@ final class TransactionViewController: UIViewController {
     }()
     
     private let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-
+    
     private let dateLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor(resource: .customColorPrimary)
@@ -209,18 +208,18 @@ final class TransactionViewController: UIViewController {
     
     @objc private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
-            case 0:
-                transactionTypeSegmentedControl.selectedSegmentTintColor = UIColor(resource: .customColorExpense)
-                showCategoryTextField()
-                presenter.transactionType = .expense
-            case 1:
-                transactionTypeSegmentedControl.selectedSegmentTintColor = UIColor(resource: .customColorIncome)
-                hideCategoryTextField()
-                presenter.transactionType = .income
-                categoryTextField.text = .none
-                categoryPickerView.selectRow(0, inComponent: 0, animated: false)
-            default:
-                break
+        case 0:
+            transactionTypeSegmentedControl.selectedSegmentTintColor = UIColor(resource: .customColorExpense)
+            showCategoryTextField()
+            presenter.transactionType = .expense
+        case 1:
+            transactionTypeSegmentedControl.selectedSegmentTintColor = UIColor(resource: .customColorIncome)
+            hideCategoryTextField()
+            presenter.transactionType = .income
+            categoryTextField.text = .none
+            categoryPickerView.selectRow(0, inComponent: 0, animated: false)
+        default:
+            break
         }
     }
     
@@ -229,7 +228,7 @@ final class TransactionViewController: UIViewController {
         guard let amount = Double(amountTextField.text!) else { return }
         let detail = detailTextfield.text ?? ""
         let category = categoryTextField.text ?? ""
-                
+        
         isComplete = presenter.recordTransaction(amount: amount, detail: detail, category: category, date: datePicker.date)
         print(isComplete)
     }
@@ -247,7 +246,7 @@ final class TransactionViewController: UIViewController {
 extension TransactionViewController: UITextFieldDelegate {
     
     // TODO: - Fix a error when the user change from another textField to the amountTextfield(Can write a letter)
-
+    
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if textField.tag == 1 {
@@ -272,8 +271,8 @@ extension TransactionViewController: UITextFieldDelegate {
         } else if textField.tag == 2 {
             return false
         }
-           return true
-        }
+        return true
+    }
 }
 
 extension TransactionViewController: UIPickerViewDataSource, UIPickerViewDelegate {

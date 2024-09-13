@@ -9,7 +9,6 @@ import RealmSwift
 import Foundation
 
 protocol HomeInteractorProtocol {
-    func getBalance() -> Double
     func getExpenses(with startDate: Date, and endDate: Date) -> [Expense]
     func getIncomes(with startDate: Date, and endDate: Date) -> [Income]
 }
@@ -28,9 +27,4 @@ extension HomeInteractor: HomeInteractorProtocol {
         let incomes = realm.objects(Income.self).filter("date >= %@ AND date <= %@", startDate, endDate)
         return Array(incomes)
     }
-    
-    func getBalance() -> Double {
-        10000.00
-    }
-    
 }

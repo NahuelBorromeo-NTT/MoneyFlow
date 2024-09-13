@@ -24,7 +24,6 @@ protocol ExpensesPresenterProtocol {
 }
 
 final class ExpensesPresenter {
-    
     weak var view: ExpensesView!
     var interactor: ExpensesInteractorProtocol!
     var router: ExpensesRouterProtocol!
@@ -58,7 +57,6 @@ final class ExpensesPresenter {
 }
 
 extension ExpensesPresenter: ExpensesPresenterProtocol {
-    
     var monthsCount: Int {
         months.count
     }

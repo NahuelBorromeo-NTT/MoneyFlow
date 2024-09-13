@@ -12,7 +12,6 @@ protocol ConfigurationRouterProtocol {
 }
 
 final class ConfigurationRouter: ConfigurationRouterProtocol {
-    
     var viewController: UIViewController!
     
     static func createModule() -> UIViewController {

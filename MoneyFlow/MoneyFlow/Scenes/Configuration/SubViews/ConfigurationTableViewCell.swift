@@ -8,9 +8,8 @@
 import UIKit
 
 final class ConfigurationTableViewCell: UITableViewCell {
-    
     private let configurationLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.textColor = .black
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false

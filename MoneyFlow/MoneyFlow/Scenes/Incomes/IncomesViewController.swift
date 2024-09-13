@@ -12,7 +12,6 @@ protocol IncomesView: AnyObject {
 }
 
 final class IncomesViewController: UIViewController {
-    
     var presenter: IncomesPresenterProtocol!
     
     private let hiddenTextField = UITextField()
@@ -65,7 +64,7 @@ final class IncomesViewController: UIViewController {
         datePickerView.dataSource = self
         
         [tableView, pickerButton, hiddenTextField].forEach(view.addSubview)
-                
+        
         NSLayoutConstraint.activate([
             pickerButton.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 40),
             pickerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),

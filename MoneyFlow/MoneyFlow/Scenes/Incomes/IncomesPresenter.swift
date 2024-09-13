@@ -24,7 +24,6 @@ protocol IncomesPresenterProtocol {
 }
 
 final class IncomesPresenter {
-    
     weak var view: IncomesView!
     var interactor: IncomesInteractorProtocol!
     var router: IncomesRouterProtocol!

@@ -10,7 +10,6 @@ protocol ConfigurationPresenterProtocol {
 }
 
 final class ConfigurationPresenter: ConfigurationPresenterProtocol {
-    
     weak var view: ConfigurationView!
     var interactor: ConfigurationInteractorProtocol!
     var router: ConfigurationRouterProtocol!

@@ -13,7 +13,6 @@ protocol HomeView: AnyObject {
 }
 
 class HomeViewController: UIViewController {
-    
     var presenter: HomePresenterProtocol!
     var barChartView: BarChartView!
     
@@ -54,7 +53,7 @@ class HomeViewController: UIViewController {
     }()
     
     // TODO: - convertir a componente
-
+    
     private let datePickerView: UIPickerView = {
         let pickerView = UIPickerView()
         return pickerView
@@ -116,18 +115,18 @@ class HomeViewController: UIViewController {
         barChartView = BarChartView()
         barChartView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 300)
         barChartView.center = view.center
-                
+        
         let ingresosEntry = BarChartDataEntry(x: 0.0, y: presenter.getAmountIncomes())
         let gastosEntry = BarChartDataEntry(x: 1.0, y: presenter.getAmountExpenses())
         
         let dataSet = BarChartDataSet(entries: [ingresosEntry, gastosEntry], label: "Ingresos vs Gastos")
-
+        
         dataSet.colors = [NSUIColor(resource: .customColorIncome), NSUIColor(resource: .customColorExpense)]
-
+        
         let data = BarChartData(dataSet: dataSet)
-
+        
         barChartView.data = data
-
+        
         barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: ["Ingresos", "Gastos"])
         barChartView.xAxis.granularity = 1
         barChartView.xAxis.labelPosition = .bottom
@@ -139,11 +138,11 @@ class HomeViewController: UIViewController {
         let gastosEntry = BarChartDataEntry(x: 1.0, y: presenter.getAmountExpenses())
         
         let dataSet = BarChartDataSet(entries: [ingresosEntry, gastosEntry], label: "Ingresos vs Gastos")
-
+        
         dataSet.colors = [NSUIColor(resource: .customColorIncome), NSUIColor(resource: .customColorExpense)]
-
+        
         let data = BarChartData(dataSet: dataSet)
-
+        
         barChartView.data = data
         barChartView.animate(yAxisDuration: 2.0)
     }
@@ -158,7 +157,7 @@ class HomeViewController: UIViewController {
     }
     
     // TODO: - Convertir en componente
-
+    
     private func createToolbar() -> UIToolbar {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()

@@ -12,7 +12,6 @@ protocol ExpensesRouterProtocol {
 }
 
 final class ExpensesRouter: ExpensesRouterProtocol {
-    
     var viewController: UIViewController!
     
     static func createModule() -> UIViewController {
