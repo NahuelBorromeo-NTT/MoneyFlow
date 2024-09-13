@@ -8,7 +8,7 @@
 import UIKit
 
 final class ExpenseTableViewCell: UITableViewCell {
-    let detailLabel: UILabel = {
+    private let detailLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.textAlignment = .left
@@ -16,7 +16,7 @@ final class ExpenseTableViewCell: UITableViewCell {
         return label
     }()
     
-    let dateLabel: UILabel = {
+    private let dateLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.textAlignment = .center
@@ -24,7 +24,7 @@ final class ExpenseTableViewCell: UITableViewCell {
         return label
     }()
     
-    let amountLabel: UILabel = {
+    private let amountLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.textAlignment = .right

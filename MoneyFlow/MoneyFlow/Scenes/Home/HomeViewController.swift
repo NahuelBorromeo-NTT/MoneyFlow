@@ -145,6 +145,7 @@ class HomeViewController: UIViewController {
         let data = BarChartData(dataSet: dataSet)
 
         barChartView.data = data
+        barChartView.animate(yAxisDuration: 2.0)
     }
     
     @objc private func pickerButtonTapped() {
@@ -171,7 +172,6 @@ class HomeViewController: UIViewController {
     }
     
     @objc private func doneTapped() {
-        pickerButton.setTitle(presenter.getPickerButtonTitle(), for: .normal)
         hiddenTextField.resignFirstResponder()
     }
 }
@@ -197,6 +197,7 @@ extension HomeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         }
         presenter.getBalance()
         updateBarChart()
+        pickerButton.setTitle(presenter.getPickerButtonTitle(), for: .normal)
     }
 }
 

@@ -94,7 +94,6 @@ final class IncomesViewController: UIViewController {
     }
     
     @objc private func doneTapped() {
-        pickerButton.setTitle(presenter.getPickerButtonTitle(), for: .normal)
         hiddenTextField.resignFirstResponder()
     }
     
@@ -147,5 +146,6 @@ extension IncomesViewController: UIPickerViewDataSource, UIPickerViewDelegate {
             presenter.selectedYear = presenter.getYear(with: row)
         }
         tableView.reloadData()
+        pickerButton.setTitle(presenter.getPickerButtonTitle(), for: .normal)
     }
 }
