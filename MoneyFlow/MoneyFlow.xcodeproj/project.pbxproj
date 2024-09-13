@@ -27,6 +27,7 @@
 		BF10EC712C87C6A9002BEA63 /* ConfigurationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF10EC702C87C6A9002BEA63 /* ConfigurationRouter.swift */; };
 		BF3FCE1E2C8F613B00EA7268 /* NotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3FCE1D2C8F613B00EA7268 /* NotificationNames.swift */; };
 		BF3FCE212C8F79FE00EA7268 /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3FCE202C8F79FE00EA7268 /* ExpenseTableViewCell.swift */; };
+		BF50EF2F2C9219D2000AEBBB /* ConfigurationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF50EF2E2C9219D2000AEBBB /* ConfigurationTableViewCell.swift */; };
 		BF5A61462C8A5D2E009EE3FA /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5A61452C8A5D2E009EE3FA /* Category.swift */; };
 		BF5A61482C8A6BE3009EE3FA /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5A61472C8A6BE3009EE3FA /* TransactionType.swift */; };
 		BF99B4232C91F1C700BCDF20 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = BFDEA6942C896D5900621383 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -79,6 +80,7 @@
 		BF10EC702C87C6A9002BEA63 /* ConfigurationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationRouter.swift; sourceTree = "<group>"; };
 		BF3FCE1D2C8F613B00EA7268 /* NotificationNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNames.swift; sourceTree = "<group>"; };
 		BF3FCE202C8F79FE00EA7268 /* ExpenseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewCell.swift; sourceTree = "<group>"; };
+		BF50EF2E2C9219D2000AEBBB /* ConfigurationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationTableViewCell.swift; sourceTree = "<group>"; };
 		BF5A61452C8A5D2E009EE3FA /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		BF5A61472C8A6BE3009EE3FA /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
 		BF9B345D2C90A071000E3115 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 		BF10EC492C87C51B002BEA63 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				BF50EF2D2C9219B9000AEBBB /* SubViews */,
 				BF10EC6A2C87C68A002BEA63 /* ConfigurationViewController.swift */,
 				BF10EC6C2C87C68F002BEA63 /* ConfigurationInteractor.swift */,
 				BF10EC6E2C87C69F002BEA63 /* ConfigurationPresenter.swift */,
@@ -177,6 +180,14 @@
 			isa = PBXGroup;
 			children = (
 				BF3FCE202C8F79FE00EA7268 /* ExpenseTableViewCell.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		BF50EF2D2C9219B9000AEBBB /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				BF50EF2E2C9219D2000AEBBB /* ConfigurationTableViewCell.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -338,6 +349,7 @@
 				BF10EC612C87C663002BEA63 /* TransactionRouter.swift in Sources */,
 				BF5A61462C8A5D2E009EE3FA /* Category.swift in Sources */,
 				BF5A61482C8A6BE3009EE3FA /* TransactionType.swift in Sources */,
+				BF50EF2F2C9219D2000AEBBB /* ConfigurationTableViewCell.swift in Sources */,
 				BF10EC672C87C67D002BEA63 /* ExpensesPresenter.swift in Sources */,
 				BF10EC6D2C87C68F002BEA63 /* ConfigurationInteractor.swift in Sources */,
 				BFD48DD92C8668AF00E42FBF /* SceneDelegate.swift in Sources */,
