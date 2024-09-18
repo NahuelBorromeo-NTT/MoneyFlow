@@ -32,6 +32,7 @@
 		BF5A61482C8A6BE3009EE3FA /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5A61472C8A6BE3009EE3FA /* TransactionType.swift */; };
 		BF99B4232C91F1C700BCDF20 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = BFDEA6942C896D5900621383 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		BF9B345E2C90A071000E3115 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9B345D2C90A071000E3115 /* DateUtils.swift */; };
+		BFC47D652C9B106E007B16FF /* BarChartViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC47D642C9B106E007B16FF /* BarChartViewWrapper.swift */; };
 		BFD48DD72C8668AF00E42FBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD48DD62C8668AF00E42FBF /* AppDelegate.swift */; };
 		BFD48DD92C8668AF00E42FBF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD48DD82C8668AF00E42FBF /* SceneDelegate.swift */; };
 		BFD48DDB2C8668AF00E42FBF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD48DDA2C8668AF00E42FBF /* HomeViewController.swift */; };
@@ -84,6 +85,7 @@
 		BF5A61452C8A5D2E009EE3FA /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		BF5A61472C8A6BE3009EE3FA /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
 		BF9B345D2C90A071000E3115 /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		BFC47D642C9B106E007B16FF /* BarChartViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartViewWrapper.swift; sourceTree = "<group>"; };
 		BFD48DD32C8668AF00E42FBF /* MoneyFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD48DD62C8668AF00E42FBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFD48DD82C8668AF00E42FBF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			children = (
 				BF3FCE1D2C8F613B00EA7268 /* NotificationNames.swift */,
 				BF9B345D2C90A071000E3115 /* DateUtils.swift */,
+				BFC47D642C9B106E007B16FF /* BarChartViewWrapper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				BF10EC712C87C6A9002BEA63 /* ConfigurationRouter.swift in Sources */,
 				BF10EC592C87C61D002BEA63 /* IncomesRouter.swift in Sources */,
 				BF9B345E2C90A071000E3115 /* DateUtils.swift in Sources */,
+				BFC47D652C9B106E007B16FF /* BarChartViewWrapper.swift in Sources */,
 				BF10EC552C87C60A002BEA63 /* IncomesInteractor.swift in Sources */,
 				BF10EC612C87C663002BEA63 /* TransactionRouter.swift in Sources */,
 				BF5A61462C8A5D2E009EE3FA /* Category.swift in Sources */,

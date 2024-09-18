@@ -14,7 +14,8 @@ protocol HomeView: AnyObject {
 
 class HomeViewController: UIViewController {
     var presenter: HomePresenterProtocol!
-    var barChartView: BarChartView!
+    private var chartWrapper: BarChartViewWrapper!
+
     
     private let hiddenTextField = UITextField()
     
@@ -84,7 +85,7 @@ class HomeViewController: UIViewController {
         datePickerView.delegate = self
         datePickerView.dataSource = self
         
-        [balanceLabel, resumeLabel, pickerButton, hiddenTextField, amountBalanceLabel, barChartView].forEach(view.addSubview)
+        [balanceLabel, resumeLabel, pickerButton, hiddenTextField, amountBalanceLabel, chartWrapper.getChartView()].forEach(view.addSubview)
         
         NSLayoutConstraint.activate([
             balanceLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
@@ -112,39 +113,21 @@ class HomeViewController: UIViewController {
     }
     
     private func setupBarChart() {
-        barChartView = BarChartView()
-        barChartView.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 300)
-        barChartView.center = view.center
+        chartWrapper = BarChartViewWrapper()
+        chartWrapper.getChartView().frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 300)
+        chartWrapper.getChartView().center = view.center
         
-        let ingresosEntry = BarChartDataEntry(x: 0.0, y: presenter.getAmountIncomes())
-        let gastosEntry = BarChartDataEntry(x: 1.0, y: presenter.getAmountExpenses())
+        let incomes = presenter.getAmountIncomes()
+        let expenses = presenter.getAmountExpenses()
         
-        let dataSet = BarChartDataSet(entries: [ingresosEntry, gastosEntry], label: "Ingresos vs Gastos")
-        
-        dataSet.colors = [NSUIColor(resource: .customColorIncome), NSUIColor(resource: .customColorExpense)]
-        
-        let data = BarChartData(dataSet: dataSet)
-        
-        barChartView.data = data
-        
-        barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: ["Ingresos", "Gastos"])
-        barChartView.xAxis.granularity = 1
-        barChartView.xAxis.labelPosition = .bottom
-        barChartView.animate(yAxisDuration: 2.0)
+        chartWrapper.setChartData(income: incomes, expenses: expenses)
     }
     
     private func updateBarChart() {
-        let ingresosEntry = BarChartDataEntry(x: 0.0, y: presenter.getAmountIncomes())
-        let gastosEntry = BarChartDataEntry(x: 1.0, y: presenter.getAmountExpenses())
+        let incomes = presenter.getAmountIncomes()
+        let expenses = presenter.getAmountExpenses()
         
-        let dataSet = BarChartDataSet(entries: [ingresosEntry, gastosEntry], label: "Ingresos vs Gastos")
-        
-        dataSet.colors = [NSUIColor(resource: .customColorIncome), NSUIColor(resource: .customColorExpense)]
-        
-        let data = BarChartData(dataSet: dataSet)
-        
-        barChartView.data = data
-        barChartView.animate(yAxisDuration: 2.0)
+        chartWrapper.setChartData(income: incomes, expenses: expenses)
     }
     
     @objc private func pickerButtonTapped() {
