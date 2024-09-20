@@ -9,6 +9,7 @@ import Foundation
 
 protocol ExpensesPresenterProtocol {
     func getDetailAt(_ row: Int) -> String
+    func getCategoryAt(_ row: Int) -> String
     func getAmountAt(_ row: Int) -> String
     func getDateAt(_ row: Int) -> Date
     func getMonth(with index: Int) -> String
@@ -88,6 +89,11 @@ extension ExpensesPresenter: ExpensesPresenterProtocol {
     func getDetailAt(_ row: Int) -> String {
         let expenses = getExpenses()
         return expenses[row].detail
+    }
+    
+    func getCategoryAt(_ row: Int) -> String {
+        let expenses = getExpenses()
+        return expenses[row].category
     }
     
     func getAmountAt(_ row: Int) -> String {

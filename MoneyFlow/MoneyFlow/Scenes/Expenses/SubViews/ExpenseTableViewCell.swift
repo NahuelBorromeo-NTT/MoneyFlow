@@ -24,6 +24,14 @@ final class ExpenseTableViewCell: UITableViewCell {
         return label
     }()
     
+    private let categoryLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private let amountLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
@@ -49,6 +57,7 @@ final class ExpenseTableViewCell: UITableViewCell {
     private func setup() {
         contentView.addSubview(detailLabel)
         contentView.addSubview(amountLabel)
+        contentView.addSubview(categoryLabel)
         contentView.addSubview(dateLabel)
         NSLayoutConstraint.activate([
             detailLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
@@ -60,15 +69,20 @@ final class ExpenseTableViewCell: UITableViewCell {
             dateLabel.leadingAnchor.constraint(equalTo: detailLabel.trailingAnchor, constant: 8),
             dateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
             
+            categoryLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            categoryLabel.leadingAnchor.constraint(equalTo: dateLabel.trailingAnchor, constant: 8),
+            categoryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+            
             amountLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
             amountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             amountLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
         ])
     }
     
-    func setup(title: String, amount: String, date: Date) {
+    func setup(title: String, amount: String, date: Date, category: String) {
         detailLabel.text = title
         amountLabel.text = "S/. \(amount)"
         dateLabel.text = DateUtils.formatDate(date)
+        categoryLabel.text = category
     }
 }

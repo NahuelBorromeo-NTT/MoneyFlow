@@ -120,7 +120,7 @@ extension ExpensesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ExpenseTableViewCell", for: indexPath) as? ExpenseTableViewCell
-        cell?.setup(title: presenter.getDetailAt(indexPath.row), amount: presenter.getAmountAt(indexPath.row), date: presenter.getDateAt(indexPath.row))
+        cell?.setup(title: presenter.getDetailAt(indexPath.row), amount: presenter.getAmountAt(indexPath.row), date: presenter.getDateAt(indexPath.row), category: presenter.getCategoryAt(indexPath.row))
         return cell ?? UITableViewCell()
     }
 }
